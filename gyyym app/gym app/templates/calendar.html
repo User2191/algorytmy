@@ -1,0 +1,20 @@
+{% extends "bootstrap/base.html" %}
+{% block scripts %}
+    {{ super() }}
+    <link rel="stylesheet" href="main/includes/css.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+    .nav-item2 a {
+        color:#e8e8e8;
+        background-color: #131315;
+    }
+    </style>
+{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+
+
+
+
+    {% include "main/includes/footer.html" %}
+{% endblock %}

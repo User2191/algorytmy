@@ -1,0 +1,944 @@
+{% extends "bootstrap/base.html" %}
+
+{% block scripts %}
+    {{ super() }}
+<!--suppress HtmlUnknownTarget -->
+    <link rel="stylesheet" href="main/includes/css.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        *{
+            text-align: center;
+            font-family: "Comic Sans MS",serif;
+            font-size: 20px;
+        }
+    .nav-item4 a {
+        color:#e8e8e8;
+        background-color: #131315;
+    }
+    .list{
+        padding: 10px 10px 60px;
+        background-color: #131315;
+    }
+
+        .navbar-brand{
+        color:#e8e8e8;
+            font-family: "Comic Sans MS",serif;
+            font-size: 18px;
+    }
+
+    .container-fluid{
+        border-radius: 10px;
+        padding: 10px;
+        border: 1px solid;
+        box-shadow: inset 0 0 8px 4px rgba(126, 126, 126, 0.5);
+        background-color: #232323;
+    }
+
+    .container-fluid:hover{
+        background-color: #131315;
+    }
+
+        div .btn-group{
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+    }
+
+        .col img{
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+        p {
+            margin-top: 20px;
+            margin-right: 2px;
+        }
+
+        footer li a i{
+            font-size: xx-large;
+        }
+    </style>
+{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<div class="list">
+ <nav class="navbar navbar-expand-sm navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Back + biceps</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+              <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+
+                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/pull-ups.ico')}}">
+                        <div class="d-flex flex-column">
+                        <p>Pull up</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        </li>
+        <li class="nav-item">
+              <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+
+                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/inverted-row.ico')}}">
+                        <div class="d-flex flex-column w-70">
+                        <p>Inverted row</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        </li>
+        <li class="nav-item">
+              <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+
+                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/deadlift.ico')}}">
+                        <div class="d-flex flex-column">
+                        <p>Deadlift</p>
+                        <div class="card-body">
+                                <div class="btn-group align-self-end">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+ <nav class="navbar navbar-expand-sm navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Chest + shoulders + triceps</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar2">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar2">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+              <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+
+                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/bench-press.ico')}}">
+                        <div class="d-flex flex-column">
+                        <p>Bench press</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        </li>
+        <li class="nav-item">
+              <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+
+                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/military-press.ico')}}">
+                        <div class="d-flex flex-column">
+                        <p>Military press</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        </li>
+        <li class="nav-item">
+              <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+
+                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/dips.ico')}}">
+                        <div class="d-flex flex-column">
+                        <p>Dips</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        </li>
+          <li class="nav-item">
+              <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+
+                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/push-ups.ico')}}">
+                        <div class="d-flex flex-column">
+                        <p>Push ups</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+ <nav class="navbar navbar-expand-sm navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Quads</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar3">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar3">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+              <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+
+                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/squat.ico')}}">
+                        <div class="d-flex flex-column">
+                        <p>Squat</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        </li>
+        <li class="nav-item">
+              <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+
+                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/bulgarian.ico')}}">
+                        <div class="d-flex flex-column">
+                        <p>Bulgarian split squat</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+ <nav class="navbar navbar-expand-sm navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Glutes + hamstrings + calves</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar5">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar5">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+              <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+
+                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/hip-thrust.ico')}}">
+                        <div class="d-flex flex-column">
+                        <p>Hip thrust</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        </li>
+        <li class="nav-item">
+              <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+
+                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/deadlift.ico')}}">
+                        <div class="d-flex flex-column">
+                        <p>Deadlift</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        </li>
+        <li class="nav-item">
+              <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+
+                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/bulgarian.ico')}}">
+                        <div class="d-flex flex-column">
+                        <p>Bulgarian split squat</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        </li>
+          <li class="nav-item">
+              <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+
+                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/kickback.ico')}}">
+                        <div class="d-flex flex-column">
+                        <p>Kickback</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        </li>
+          <li class="nav-item">
+              <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+
+                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/hip-abduction.ico')}}">
+                        <div class="d-flex flex-column">
+                        <p>Hip abduction</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+ <nav class="navbar navbar-expand-sm navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Core</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar6">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar6">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>Nogi do góry w zwisie</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>Ziuuum na piłce do stania na rękach</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>Plank na piłce + bujanie na łokciach</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+          <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>Flaga na ziemi przy drabince</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+ <nav class="navbar navbar-expand-sm navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Calisthenics</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar7">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar7">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>Stanie na rękach odrywanie nóg przy ścianie</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>Ziuuum na piłce do stania na rękach</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+ <nav class="navbar navbar-expand-sm navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Plyometrics</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar8">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar8">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>Przysiad wyskok</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>Przysiad wyskok w bułgarach</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ćw</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+ <nav class="navbar navbar-expand-sm navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Running</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar9">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar9">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>60m</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>100m</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>200m</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+          <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>400m</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+          <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>1km</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+          <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>3km</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+          <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>5km</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+          <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>10km</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+          <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>15km</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+          <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>21km</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+          <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>30km</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+          <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>42km</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+ <nav class="navbar navbar-expand-sm navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Warm-up</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar10">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar10">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">ćw</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ćw</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ćw</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+ <nav class="navbar navbar-expand-sm navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Stretching</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar11">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar11">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">ćw</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ćw</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ćw</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+ <nav class="navbar navbar-expand-sm navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Fitness classes</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar12">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar12">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>Kickboxing</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>Boxing</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>Table tennis</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+          <li class="nav-item">
+            <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card border-black mb-3 d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-column">
+                        <p>Climbing</p>
+                        <div class="card-body">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+</div>
+<footer>
+    {% include "main/includes/footer.html" %}
+</footer>
+{% endblock %}

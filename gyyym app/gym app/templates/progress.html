@@ -1,0 +1,30 @@
+{% extends "bootstrap/base.html" %}
+{% block scripts %}
+    {{ super() }}
+    <link rel="stylesheet" href="main/includes/css.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+    .nav-item5 a {
+        color:#e8e8e8;
+        background-color: #131315;
+    }
+    </style>
+{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+{
+{% block content %}
+
+    <!-- progress Us Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <img src="https://via.placeholder.com/500" class="img-fluid rounded" alt="Nasza Firma">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    {% include "main/includes/footer.html" %}
+{% endblock %}
