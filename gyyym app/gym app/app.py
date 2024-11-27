@@ -19,13 +19,14 @@ app = Flask(__name__)
 bootstrap = Bootstrap(app)
 app.config['SECRET_KEY'] = secrets.token_urlsafe(16)
 
+"""
 mydb = mysql.connector.connect(
     host="127.0.0.1",
     user="root",
     password="meowsclesgymapp",
     database="meowscles"
 )
-
+"""
 # formularze logowania i rejestracji
 class LoginForm(FlaskForm):
     """
@@ -80,7 +81,7 @@ def register():
 
         # Hash the password
         hashed_password = bcrypt.hashpw(user_password.encode('utf-8'), bcrypt.gensalt())
-
+"""
         # Connecting to the database
         with mydb.cursor() as mycursor:
             sql = "INSERT INTO users (user_name, user_password, user_email) VALUES (%s, %s, %s)"
@@ -88,8 +89,11 @@ def register():
             mydb.commit()
             return redirect(url_for('clock'))
     return render_template('register.html', title='Rejestracja', register_form=register_form)
-
-
+"""
+class ORM(FlaskForm):
+    user_a = StringField('weight(kg):', validators=[DataRequired()])
+    user_b = StringField('reps:', validators=[DataRequired()])
+    submit = SubmitField('calculate')
 
 # główna część aplikacji
 
@@ -98,9 +102,18 @@ def clock():
     return render_template('clock.html', title='Home')
 
 
-@app.route('/progress')
+@app.route('/progress', methods=['GET', 'POST'])
 def progress():
-    return render_template('progress.html', title='progress')
+    counter_form = ORM()
+    if request.method == 'POST' and counter_form.validate_on_submit():
+        try:
+            a = float(counter_form.user_a.data)
+            b = float(counter_form.user_b.data)
+            result = b * a
+            return render_template('progress.html', title='Progress', result=result, counter_form=counter_form)
+        except ValueError:
+            return render_template('progress.html', title='Progress', error="Invalid input. Please enter valid numbers.", counter_form=counter_form)
+    return render_template('progress.html', title='Progress', counter_form=counter_form)
 
 
 @app.route('/exercises')
