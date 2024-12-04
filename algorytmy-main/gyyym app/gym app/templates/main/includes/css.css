@@ -1,0 +1,54 @@
+    *{
+        font-family: "Comic Sans MS", serif;
+    }
+
+    body{
+        background-color: #131315;
+        min-width: 360px;
+        min-height: 760px;
+        max-width: 360px;
+        max-height: 760px;
+    }
+
+    footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 60px;
+        background-color: #e8e8e8;
+        color: black;
+        text-align: center;
+        box-shadow: inset 0 3px 10px 1px #13131570;
+    }
+
+
+    footer ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-around;
+
+    }
+
+    footer li {
+        display: inline-block;
+        font-size: xx-large;
+    }
+
+    footer li a {
+        display: block;
+        color: #131315;
+        text-align: center;
+        padding: 5px 15px;
+        text-decoration: none;
+    }
+    footer li a:hover {
+        background-color: #131315;
+        color:#e8e8e8;
+    }
+    footer i{
+        font-size: 50px;
+    }

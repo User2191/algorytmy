@@ -1,0 +1,67 @@
+{% extends "bootstrap/base.html" %}
+
+{% block scripts %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='includes/css.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .nav-item5 a {
+            color: #e8e8e8;
+            background-color: #131315;
+        }
+
+        .btn{
+            box-shadow: inset 0 3px 10px 1px #13131570;
+            border: #13131570;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <img src="https://via.placeholder.com/500" class="img-fluid rounded" alt="img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container mx-auto mt-1 text-light pb-5" style="max-width:360px">
+        <div class="row gy-4">
+            <div class="col-lg-6">
+            </div>
+            <div class="col-lg-6 d-lg-flex align-items-lg-center">
+                <div style="max-width: 350px;">
+                    <h3 class="fw-semibold text-center mb-4">One Rep Max</h3>
+                    <h6>Calculate your one-rep max (1RM) for any lift. Your one-rep max is the max weight you can lift for a single repetition for a given exercise.</h6>
+                    <form action="{{ url_for('progress') }}" method="POST">
+                        {{ counter_form.hidden_tag() }}
+                        <div class="mb-3">
+                            {{ counter_form.user_a.label(class="form-label") }}
+                            {{ counter_form.user_a(class="form-control") }}
+                        </div>
+                        <div class="mb-1">
+                            {{ counter_form.user_b.label(class="form-label") }}
+                            {{ counter_form.user_b(class="form-control") }}
+                        </div>
+                        <div class="mx-auto pb-5" style="max-width:70px">
+                            {{ counter_form.submit(class="btn btn-sm btn-light mt-3 float-end") }}
+                        </div>
+                    </form>
+
+                    {% if result %}
+                        <h5 class="mx-auto mb-4">Result: {{ result }}</h5>
+                    {% elif error %}
+                        <h5 class="mx-auto mb-4 text-danger">{{ error }}</h5>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include "main/includes/footer.html" %}
+{% endblock %}
