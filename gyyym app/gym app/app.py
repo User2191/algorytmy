@@ -1,6 +1,3 @@
-
-#BRAK RESPONSYWNOŚCI BO SIĘ ZACZĘŁAM BAWIĆ GRAFIKĄ WEKTOROWĄ (W PX CHYBA ŁATWIEJ), NA RAZIE ZROBIONE POD 360x760
-
 import register
 from flask import Flask, render_template, jsonify, request, json, redirect, url_for
 from flask_pymongo import PyMongo
@@ -19,14 +16,13 @@ app = Flask(__name__)
 bootstrap = Bootstrap(app)
 app.config['SECRET_KEY'] = secrets.token_urlsafe(16)
 
-"""
 mydb = mysql.connector.connect(
-    host="127.0.0.1",
-    user="root",
-    password="meowsclesgymapp",
-    database="meowscles"
+    host="sql84.lh.pl",
+    user="serwer158348_kmadzia",
+    password="7C*qZ-1WAuduA_2*",
+    database="serwer158348_kmadzia"
 )
-"""
+
 # formularze logowania i rejestracji
 class LoginForm(FlaskForm):
     """
@@ -81,7 +77,7 @@ def register():
 
         # Hash the password
         hashed_password = bcrypt.hashpw(user_password.encode('utf-8'), bcrypt.gensalt())
-"""
+
         # Connecting to the database
         with mydb.cursor() as mycursor:
             sql = "INSERT INTO users (user_name, user_password, user_email) VALUES (%s, %s, %s)"
@@ -89,11 +85,23 @@ def register():
             mydb.commit()
             return redirect(url_for('clock'))
     return render_template('register.html', title='Rejestracja', register_form=register_form)
-"""
-class ORM(FlaskForm):
-    user_a = StringField('weight(kg):', validators=[DataRequired()])
-    user_b = StringField('reps:', validators=[DataRequired()])
-    submit = SubmitField('calculate')
+
+
+@app.route('/submit', methods=['POST'])
+def submit():
+    try:
+        # Pobieranie danych z formularza
+        data = [(i, int(request.form[f'number{i}'])) for i in range(1, 11)]
+
+        # Zapis danych do bazy
+        with mydb.cursor() as mycursor:
+            mycursor.executemany('INSERT INTO prs (exercise, weight) VALUES (?, ?)', data)
+            mydb.commit()
+            mydb.close()
+
+        return "saved"
+    except Exception as e:
+        return f"error: {e}"
 
 # główna część aplikacji
 
@@ -102,18 +110,9 @@ def clock():
     return render_template('clock.html', title='Home')
 
 
-@app.route('/progress', methods=['GET', 'POST'])
+@app.route('/progress')
 def progress():
-    counter_form = ORM()
-    if request.method == 'POST' and counter_form.validate_on_submit():
-        try:
-            a = float(counter_form.user_a.data)
-            b = float(counter_form.user_b.data)
-            result = b * a
-            return render_template('progress.html', title='Progress', result=result, counter_form=counter_form)
-        except ValueError:
-            return render_template('progress.html', title='Progress', error="Invalid input. Please enter valid numbers.", counter_form=counter_form)
-    return render_template('progress.html', title='Progress', counter_form=counter_form)
+    return render_template('progress.html', title='progress')
 
 
 @app.route('/exercises')

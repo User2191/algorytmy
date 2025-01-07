@@ -8,8 +8,12 @@
     <style>
         *{
             text-align: center;
-            font-family: "Comic Sans MS",serif;
+            font-family: Arial, sans-serif;
             font-size: 20px;
+            max-width: 575px;
+        }
+        body{
+            max-width: 575px;
         }
     .nav-item4 a {
         color:#e8e8e8;
@@ -18,11 +22,11 @@
     .list{
         padding: 10px 10px 60px;
         background-color: #131315;
+        max-width: 575px;
     }
 
         .navbar-brand{
         color:#e8e8e8;
-            font-family: "Comic Sans MS",serif;
             font-size: 18px;
     }
 
@@ -32,29 +36,42 @@
         border: 1px solid;
         box-shadow: inset 0 0 8px 4px rgba(126, 126, 126, 0.5);
         background-color: #232323;
+        max-width: 575px;
     }
 
     .container-fluid:hover{
         background-color: #131315;
     }
 
-        div .btn-group{
-            position: absolute;
-            right: 20px;
-            bottom: 10px;
-    }
 
-        .col img{
-            margin-top: 20px;
-            margin-left: 10px;
-        }
         p {
-            margin-top: 20px;
-            margin-right: 2px;
+            font-size: 15px;
+            margin: 2px;
         }
 
         footer li a i{
             font-size: xx-large;
+        }
+
+        .card-body{
+            margin: 0;
+            padding: 5px;
+        }
+        .btn-sm{
+            --bs-btn-font-size: 15px;
+            --bs-btn-line-height: 15px;
+        }
+        ul{
+            max-width: 575px;
+        }
+        .nav-item{
+            max-width: 575px;
+        }
+        .navbar-collapse{
+            max-width: 575px;
+        }
+        .navbar-expand-sm{
+            max-width: 575px;
         }
     </style>
 {% endblock %}
@@ -67,22 +84,20 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <div class="collapse navbar-collapse mt-2" id="collapsibleNavbar">
       <ul class="navbar-nav">
         <li class="nav-item">
               <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col">
                     <div class="card border-black mb-3 d-flex flex-row justify-content-around">
-
-                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/pull-ups.ico')}}">
                         <div class="d-flex flex-column">
                         <p>Pull up</p>
                         <div class="card-body">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
                                 </div>
-                                </div>
+                        </div>
                         </div>
                     </div>
                     </div>
@@ -94,8 +109,6 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col">
                     <div class="card border-black mb-3 d-flex flex-row justify-content-around">
-
-                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/inverted-row.ico')}}">
                         <div class="d-flex flex-column w-70">
                         <p>Inverted row</p>
                         <div class="card-body">
@@ -114,8 +127,6 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col">
                     <div class="card border-black mb-3 d-flex flex-row justify-content-around">
-
-                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/deadlift.ico')}}">
                         <div class="d-flex flex-column">
                         <p>Deadlift</p>
                         <div class="card-body">
@@ -140,15 +151,13 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar2">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar2">
+    <div class="collapse navbar-collapse mt-2" id="collapsibleNavbar2">
       <ul class="navbar-nav">
         <li class="nav-item">
               <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col">
                     <div class="card border-black mb-3 d-flex flex-row justify-content-around">
-
-                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/bench-press.ico')}}">
                         <div class="d-flex flex-column">
                         <p>Bench press</p>
                         <div class="card-body">
@@ -167,8 +176,6 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col">
                     <div class="card border-black mb-3 d-flex flex-row justify-content-around">
-
-                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/military-press.ico')}}">
                         <div class="d-flex flex-column">
                         <p>Military press</p>
                         <div class="card-body">
@@ -187,8 +194,6 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col">
                     <div class="card border-black mb-3 d-flex flex-row justify-content-around">
-
-                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/dips.ico')}}">
                         <div class="d-flex flex-column">
                         <p>Dips</p>
                         <div class="card-body">
@@ -207,8 +212,6 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col">
                     <div class="card border-black mb-3 d-flex flex-row justify-content-around">
-
-                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/push-ups.ico')}}">
                         <div class="d-flex flex-column">
                         <p>Push ups</p>
                         <div class="card-body">
@@ -233,15 +236,13 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar3">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar3">
+    <div class="collapse navbar-collapse mt-2" id="collapsibleNavbar3">
       <ul class="navbar-nav">
         <li class="nav-item">
               <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col">
                     <div class="card border-black mb-3 d-flex flex-row justify-content-around">
-
-                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/squat.ico')}}">
                         <div class="d-flex flex-column">
                         <p>Squat</p>
                         <div class="card-body">
@@ -260,8 +261,6 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col">
                     <div class="card border-black mb-3 d-flex flex-row justify-content-around">
-
-                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/bulgarian.ico')}}">
                         <div class="d-flex flex-column">
                         <p>Bulgarian split squat</p>
                         <div class="card-body">
@@ -286,15 +285,13 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar5">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar5">
+    <div class="collapse navbar-collapse mt-2" id="collapsibleNavbar5">
       <ul class="navbar-nav">
         <li class="nav-item">
               <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col">
                     <div class="card border-black mb-3 d-flex flex-row justify-content-around">
-
-                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/hip-thrust.ico')}}">
                         <div class="d-flex flex-column">
                         <p>Hip thrust</p>
                         <div class="card-body">
@@ -313,8 +310,6 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col">
                     <div class="card border-black mb-3 d-flex flex-row justify-content-around">
-
-                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/deadlift.ico')}}">
                         <div class="d-flex flex-column">
                         <p>Deadlift</p>
                         <div class="card-body">
@@ -333,8 +328,6 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col">
                     <div class="card border-black mb-3 d-flex flex-row justify-content-around">
-
-                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/bulgarian.ico')}}">
                         <div class="d-flex flex-column">
                         <p>Bulgarian split squat</p>
                         <div class="card-body">
@@ -353,8 +346,6 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col">
                     <div class="card border-black mb-3 d-flex flex-row justify-content-around">
-
-                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/kickback.ico')}}">
                         <div class="d-flex flex-column">
                         <p>Kickback</p>
                         <div class="card-body">
@@ -373,8 +364,6 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col">
                     <div class="card border-black mb-3 d-flex flex-row justify-content-around">
-
-                        <img alt="img" height="100px" width="100px" src="{{url_for('static', filename='/images/exercises/hip-abduction.ico')}}">
                         <div class="d-flex flex-column">
                         <p>Hip abduction</p>
                         <div class="card-body">
@@ -399,7 +388,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar6">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar6">
+    <div class="collapse navbar-collapse mt-2" id="collapsibleNavbar6">
       <ul class="navbar-nav">
         <li class="nav-item">
             <div class="container">
@@ -484,7 +473,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar7">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar7">
+    <div class="collapse navbar-collapse mt-2" id="collapsibleNavbar7">
       <ul class="navbar-nav">
         <li class="nav-item">
             <div class="container">
@@ -533,7 +522,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar8">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar8">
+    <div class="collapse navbar-collapse mt-2" id="collapsibleNavbar8">
       <ul class="navbar-nav">
         <li class="nav-item">
             <div class="container">
@@ -585,7 +574,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar9">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar9">
+    <div class="collapse navbar-collapse mt-2" id="collapsibleNavbar9">
       <ul class="navbar-nav">
         <li class="nav-item">
             <div class="container">
@@ -791,7 +780,7 @@
                 <div class="col">
                     <div class="card border-black mb-3 d-flex flex-row justify-content-around">
                         <div class="d-flex flex-column">
-                        <p>42km</p>
+                        <p>42,2km</p>
                         <div class="card-body">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary">add</button>
@@ -814,7 +803,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar10">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar10">
+    <div class="collapse navbar-collapse mt-2" id="collapsibleNavbar10">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href="#">ćw</a>
@@ -836,7 +825,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar11">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar11">
+    <div class="collapse navbar-collapse mt-2" id="collapsibleNavbar11">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href="#">ćw</a>
@@ -858,7 +847,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar12">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar12">
+    <div class="collapse navbar-collapse mt-2" id="collapsibleNavbar12">
       <ul class="navbar-nav">
         <li class="nav-item">
             <div class="container">

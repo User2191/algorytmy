@@ -8,119 +8,283 @@
         color:#e8e8e8;
         background-color: #131315;
     }
-    p{
-        position: sticky;
-        top: 120px;
-        font-size: 40px;
-        text-align: center;
-        font-family: "Comic Sans MS", serif;
-        color: #fff;
-        text-shadow:
-    0 0 5px #fff,
-    0 0 10px #fff,
-    0 0 20px #fff,
-    0 0 40px #fff,
-    0 0 80px #fff,
-    0 0 90px #fff,
-    0 0 100px #fff,
-    0 0 150px #fff;
-    }
 
-         #timer {
-        position: absolute;
-        margin-left: auto;
-        margin-right: auto;
-        left:0;
-        right:0;
-        margin-left:auto;
-        margin-right:auto;
-        background-color:rgba(0,0,0,.5);
-        color:#fff;
-        display:block;
-        margin-top: 1.2em;
-        margin-bottom: 0;
-        font-size: 4.5rem;
-        width: 4.6em;
-        text-align:center;
-        font-weight:bold;
-        border-radius:5%;
-      }
+        /* Nagłówek z przyciskami */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
 
+        .header button {
+            background-color: transparent;
+            border: none;
+            font-size: 16px;
+            color: #dadada;
+            cursor: pointer;
+        }
+
+        .header button:hover {
+            text-decoration: underline;
+        }
+
+        body {
+            max-width: 500px;
+            margin: auto;
+            padding: 10px;
+            justify-content: center;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #dadada;
+        }
+        h2{
+            margin-top: 30px;
+        }
+
+        .img{
+            display: flex;
+            justify-content: center;
+        }
+
+
+.profile-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+    background-color: rgba(218, 218, 218);
+    background-image: url("static/images/pfp.jpg");
+    background-size: 125px 125px;
+    background-position-x: center;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    justify-content: center;
+}
+
+
+        #profile-img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .edit-icon {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background-color: rgba(128, 128, 128, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .avatar-selection {
+            display: none;
+            position: absolute;
+            top: 50px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        .avatar-selection img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        /* Tabela do osiągnięć */
+
+        .achievements-table {
+            width: 350px;
+            margin-top: 0px;
+            border-collapse: collapse;
+        }
+
+        .achievements-table th, .achievements-table td {
+            padding: 0px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        .achievements-table th {
+            background-color: #f8f8f8;
+        }
+
+        .achievements-table input {
+            width: 80%;
+            padding: 5px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .add-achievement-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .add-achievement-btn:hover {
+            opacity: 0.9;
+        }
+
+        form{
+            margin: 0 auto;
+        }
+        table {
+            border-collapse: collapse;
+            width: 340px;
+            font-size: 12px;
+            background-color: #dadada;
+            margin: 0 auto;
+        }
+        th, td {
+            border: 2px solid #000000;
+            text-align: center;
+        }
+        input{
+            padding: 0;
+            margin: 0;
+        }
+        #weight1,#weight2,#weight3,#weight4,#b{
+            width: 60px;
+        }
+        #bm1,#bm2,#bm3,#bm4,#c{
+            width: 79px;
+        }
+        #date1,#date2,#date3,#date4,#d{
+            width: 60px;
+        }
+        #wilks1,#wilks2,#wilks3,#wilks4,#e{
+            width: 40px;
+        }
+        .save{
+            margin-bottom: 50px;
+        }
 
     </style>
 {% endblock %}
 
 {% block title %}{{ title }}{% endblock %}
-<script>
-    function updateRemainingTime() {
-        fetch('/remaining_time')
-        .then(response => response.json())
-        .then(data => {
-            let minutes = Math.floor(data.remaining_time_in_seconds / 60);
-            let seconds = Math.floor(data.remaining_time_in_seconds % 60);
-            if (seconds < 10 && seconds >= 0) {
-                seconds = "0" + seconds;
-            }
-
-            let remainingTimeElement = document.getElementById("remaining_time");
-            remainingTimeElement.innerText = `${minutes}:${seconds}`;
-            document.getElementById("remaining_time").innerText = minutes + ":" + seconds;
-
-        })
-    }
-    setInterval(updateRemainingTime, 500);
-</script>
 {% block content %}
-<p>MEOWSCLES</p>
+<div class="header">
+        <button id="logout-btn">Wyloguj</button>
+        <button id="friends-btn" onclick="window.location.href='friends.html'">Friends</button>
+</div>
+<div class="img">
+        <div class="profile-photo">
+            <img src="avatar1.jpg" alt="." id="profile-img">
+            <button class="edit-icon" id="edit-avatar-btn"><i class="bi bi-pen"></i></button>
+            <div class="avatar-selection" id="avatar-selection">
+                <img src="avatar1.jpg" alt="Avatar 1" class="avatar" onclick="changeAvatar('avatar1.jpg')">
+                <img src="avatar2.jpg" alt="Avatar 2" class="avatar" onclick="changeAvatar('avatar2.jpg')">
+                <img src="avatar3.jpg" alt="Avatar 3" class="avatar" onclick="changeAvatar('avatar3.jpg')">
+                <img src="avatar4.jpg" alt="Avatar 4" class="avatar" onclick="changeAvatar('avatar4.jpg')">
+            </div>
+        </div>
+</div>
+    <h1 id="username">username</h1>
 
-<h1 style="text-align: center;">Timer App</h1>
+    <h2>PR's</h2>
 
-   <p id="timer"> <span id="remaining_time"></span></p>
+    <form action="/submit" method="post">
+        <table>
+            <thead>
+                <tr>
+                    <th id="a">exercise</th>
+                    <th id="b">weight(kg)</th>
+                    <th id="c">body mass(kg)</th>
+                    <th id="d">date</th>
+                    <th id="e">wilks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Bench Press</td>
+                    <td><input id="weight1" name="weight1" value="0" required></td>
+                    <td><input id="bm1" name="bm1" value="0" required></td>
+                    <td><input id="date1" type="date" name="date1" required></td>
+                    <td id="wilks1"></td>
+                </tr>
+                <tr>
+                    <td>Deadlift</td>
+                    <td><input id="weight2" name="weight1" value="0" required></td>
+                    <td><input id="bm2" name="bm1" value="0" required></td>
+                    <td><input id="date2" type="date" name="date1" required></td>
+                    <td id="wilks2"></td>
+                </tr>
+                <tr>
+                    <td>Squat</td>
+                    <td><input id="weight3" name="weight1" value="0" required></td>
+                    <td><input id="bm3" name="bm1" value="0" required></td>
+                    <td><input id="date3" type="date" name="date1" required></td>
+                    <td id="wilks3"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td><input id="weight4" name="weight1" value="0" required></td>
+                    <td><input id="bm4" name="bm1" value="0" required></td>
+                    <td><input id="date4" type="date" name="date1" required></td>
+                    <td id="wilks4"></td>
+                </tr>
 
-   <form action="/reset" method="post">
-        <input type="submit" value="Reset Timer">
-   </form>
 
-<svg width="360" height="650" xmlns="http://www.w3.org/2000/svg">
- <g>
-  <path fill="none" stroke-width="10" opacity="undefined" transform="rotate(-3, 180, 305)" d="m65,310c0,-54.3379 45.6621,-100 100,-100l30,0c54.3379,0 100,45.6621 100,100l0,-10c0,54.3379 -45.6621,100 -100,100l-30,0c-54.3379,0 -100,-45.6621 -100,-100l0,10z" id="svg_10" stroke="#ffffff"/>
-  <path fill="#fff" stroke="#000" opacity="undefined" d="m30,310c0,-16.30137 13.69863,-30 30,-30l10,0c16.30137,0 30,13.69863 30,30l0,100c0,16.30137 -13.69863,30 -30,30l-10,0c-16.30137,0 -30,-13.69863 -30,-30l0,-100z" id="svg_6"/>
-  <path fill="#fff" stroke="#000" opacity="undefined" d="m260,310c0,-16.30137 13.69863,-30 30,-30l10,0c16.30137,0 30,13.69863 30,30l0,100c0,16.30137 -13.69863,30 -30,30l-10,0c-16.30137,0 -30,-13.69863 -30,-30l0,-100z" id="svg_7"/>
-  <line id="svg_11" y2="430" x2="100.73167" y1="281" x1="100.73167" fill="none"/>
-  <line stroke-width="2" id="svg_12" y2="422.94467" x2="99.53275" y1="296.15284" x1="99.95469" stroke="#131315" fill="none"/>
-  <line id="svg_13" y2="424.42146" x2="260" y1="293.83219" x1="260" stroke-width="2" stroke="#131315" fill="none"/>
-  <rect fill="#fff" stroke="#000" x="104.75674" y="262.79631" width="65.11999" height="71.13191" id="svg_3" transform="rotate(20.2292, 137.317, 298.362)" rx="20"/>
-  <rect fill="#fff" stroke="#000" x="190" y="262.79631" width="65.11999" height="71.13191" id="svg_4" transform="rotate(-20, 222.56, 298.362)" rx="20"/>
-  <line fill="none" stroke="#000" x1="110" y1="360.34098" x2="50" y2="361.47735" id="svg_8" stroke-width="3"/>
-  <line fill="none" stroke="#000" x1="250" y1="360.34098" x2="310" y2="361.47735" id="svg_14" stroke-width="3"/>
-  <line fill="none" stroke="#000" x1="250" y1="360" x2="310" y2="350" id="svg_15" stroke-width="3"/>
-  <line fill="none" stroke="#000" x1="250" y1="360" x2="310" y2="350" id="svg_16" stroke-width="3"/>
-  <line fill="none" stroke="#000" x1="250" y1="362" x2="310" y2="370" id="svg_17" stroke-width="3"/>
-  <line fill="none" stroke="#000" x1="110" y1="360.34098" x2="50" y2="350" id="svg_18" stroke-width="3"/>
-  <line fill="none" stroke="#000" x1="110" y1="362" x2="50" y2="370" id="svg_19" stroke-width="3"/>
-  <rect fill="#ffffff" stroke="#ffffff" x="90" y="448" width="180" height="281.81821" id="svg_20" rx="100"/>
-  <ellipse fill="#ffffff" stroke="#ffffff" stroke-width="14" cx="33.40908" cy="499.54554" id="svg_22" rx="4.54545" ry="34.65909" transform="rotate(-21.6446, 33.4091, 499.546)"/>
-  <ellipse fill="#ffffff" stroke="#ffffff" stroke-width="14" cx="53.05723" cy="540.66295" id="svg_23" rx="30.39866" ry="6.25" transform="rotate(57.3134, 53.0572, 540.663)"/>
-  <ellipse fill="#ffffff" stroke-width="14" cx="87.10029" cy="591.15692" id="svg_24" rx="39.94512" ry="6.25" transform="rotate(58.1533, 87.1003, 591.157)" stroke="#ffffff"/>
-  <ellipse fill="#ffffff" stroke="#ffffff" stroke-width="14" cx="89.50489" cy="493.24606" id="svg_25" rx="10.59182" ry="45.45455" transform="rotate(-34.8907, 89.5049, 493.246)"/>
-  <ellipse fill="#ffffff" stroke="#ffffff" stroke-width="14" cx="270" cy="493.24606" id="svg_27" rx="10.59182" ry="45.45455" transform="rotate(35, 270, 493.246)"/>
-  <ellipse fill="#ffffff" stroke="#ffffff" stroke-width="14" cx="20.90908" cy="445.00009" id="svg_28" rx="4.54545" ry="34.65909" transform="rotate(-5.36991, 20.9091, 445)"/>
-  <rect fill="#bfbfbf" stroke="#ffffff" x="110" y="465" width="140" height="250" id="svg_30" rx="100"/>
-  <rect fill="#bfbfbf" x="109.30219" y="273.02358" width="65.11999" height="71.13191" id="svg_33" transform="rotate(20.2292, 141.862, 308.59)" rx="20"/>
-  <rect fill="#bfbfbf" x="186" y="273.02358" width="65.11999" height="71.13191" id="svg_34" transform="rotate(-20, 218.56, 308.59)" rx="20"/>
-  <ellipse ry="90" rx="90" id="svg_5" cy="360" cx="180" stroke="#fff" fill="#000" stroke-width="4"/>
-  <rect fill="#191919" stroke-width="10" x="140" y="555" width="20" height="50" id="svg_35" stroke="#191919" rx="10"/>
-  <rect fill="#191919" stroke-width="10" x="200" y="555" width="20" height="50" id="svg_36" stroke="#191919" rx="10"/>
-  <rect fill="#000000" stroke="#000000" stroke-width="10" x="151.59091" y="577.95464" width="64.77273" height="0" id="svg_37"/>
-  <rect fill="#191919" stroke="#191919" stroke-width="10" x="145" y="575" width="70" height="10.22727" id="svg_38"/>
-  <path fill="none" stroke="#191919" opacity="undefined" d="m51.70224,457.25802l11.95462,7.39013" id="svg_39"/>
-  <line fill="none" stroke="#000000" x1="65.83042" y1="460.30101" x2="55.3973" y2="449.65053" id="svg_42"/>
-  <line fill="none" stroke="#000000" x1="71.26434" y1="457.91009" x2="61.918" y2="447.25961" id="svg_43"/>
-  <line fill="none" stroke="#000000" x1="302.74923" y1="449.21582" x2="291.66403" y2="463.56136" id="svg_44"/>
-  <line fill="none" stroke="#000000" x1="297.75002" y1="445.3034" x2="286.66483" y2="459.64894" id="svg_45" transform="rotate(-12.2582, 292.207, 452.476)"/>
-  <line fill="none" stroke="#000000" x1="306.44429" y1="452.69353" x2="295.3591" y2="467.03907" id="svg_47"/>
- </g>
+            </tbody>
+        </table>
+        <div style="text-align: center;">
+            <button class="save" type="submit">Save</button>
+        </div>
+    </form>
 
-</svg>
+
+    <script>
+        // Pokazuje wybór avatarów
+        document.getElementById('edit-avatar-btn').onclick = function() {
+            var avatarSelection = document.getElementById('avatar-selection');
+            avatarSelection.style.display = avatarSelection.style.display === 'block' ? 'none' : 'block';
+        };
+
+        // Zmienia zdjęcie profilowe na wybrany avatar
+        function changeAvatar(avatar) {
+            document.getElementById('profile-img').src = avatar;
+            document.getElementById('avatar-selection').style.display = 'none';
+        }
+
+        // Możesz zaktualizować nazwę użytkownika dynamicznie
+        var username = "Jan Kowalski";  // Tutaj możesz dynamicznie przypisać nazwę użytkownika
+        document.getElementById('username').innerText = username;
+
+        // Funkcja dla przycisku 'Wyloguj'
+        document.getElementById('logout-btn').onclick = function() {
+            // Możesz dodać logikę wylogowania, np. usuwanie sesji
+            alert('Wylogowywanie...');
+            window.location.href = 'login.html';  // Przekierowanie do strony logowania
+        };
+
+    </script>
     {% include "main/includes/footer.html" %}
 {% endblock %}
