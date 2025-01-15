@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalendarz</title>
+    <link rel="stylesheet" href="main/includes/css.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+            .nav-item2 a {
+        color:#e8e8e8;
+        background-color: #131315;
+    }
+
+        body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center; /* Wyśrodkowanie poziome */
+    align-items: center; /* Wyśrodkowanie pionowe */
+    height: 100vh; /* Wysokość widoku na 100% */
+    margin: 0;
+}
+
+#calendar {
+    border: 1px solid rgb(115,0,0);
+    box-shadow: 0 0 5px 2px rgb(115,0,0);
+    width: 300px;
+    padding: 10px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+        #calendar table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        #calendar th, #calendar td {
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+        }
+        #calendar th {
+            border-bottom: 2px solid black;
+            border-top: 2px solid black;
+        }
+        #calendar .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navigation button{
+            background-color: rgba(0, 0, 0, 0);
+            border: 0;
+        }
+        .selected {
+            background-color: rgb(115, 0, 0);
+            color: white;
+            border-radius: 50%;
+        }
+        .today {
+            font-weight: bold;
+            color: rgb(115,0,0);
+        }
+        .hovered {
+            background-color: rgba(177, 177, 177, 0.5);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="calendar"></div>
+    {% include "main/includes/footer.html" %}
+
+<script>
+    const calendarElement = document.getElementById('calendar');
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
+    let selectedDate = null; // Przechowuje wybraną datę
+
+    // Funkcja do generowania kalendarza
+    function generateCalendar(month, year) {
+        const firstDayOfMonth = new Date(year, month, 1);
+        const lastDayOfMonth = new Date(year, month + 1, 0);
+        const daysInMonth = lastDayOfMonth.getDate();
+        const startDay = firstDayOfMonth.getDay();
+
+        // Uzyskujemy dzisiejszą datę
+        const today = new Date();
+        const todayDay = today.getDate();
+        const todayMonth = today.getMonth();
+        const todayYear = today.getFullYear();
+
+        let calendarHTML = '<div class="navigation">';
+        calendarHTML += `<button onclick="changeMonth(-1)"><i class="fas fa-chevron-left"></i></button>`;
+        calendarHTML += `<h3>${firstDayOfMonth.toLocaleString('en-EN', { month: 'long', year: 'numeric' })}</h3>`;
+        calendarHTML += `<button onclick="changeMonth(1)"><i class="fas fa-chevron-right"></i></button>`;
+        calendarHTML += '</div>';
+
+        calendarHTML += '<table>';
+        calendarHTML += '<thead><tr>';
+        ['M', 'T', 'W', 'T', 'F', 'S', 'S'].forEach(day => {
+            calendarHTML += `<th>${day}</th>`;
+        });
+        calendarHTML += '</tr></thead><tbody>';
+
+        // Puste komórki przed pierwszym dniem miesiąca
+        let currentDay = 1;
+        let offset = startDay === 0 ? 6 : startDay - 1; // Przesuwamy początek na poniedziałek
+        for (let i = 0; i < 6; i++) {
+            calendarHTML += '<tr>';
+            for (let j = 0; j < 7; j++) {
+                if (i === 0 && j < offset) {
+                    calendarHTML += '<td></td>';
+                } else if (currentDay <= daysInMonth) {
+                    const dayString = `${year}-${(month + 1).toString().padStart(2, '0')}-${currentDay.toString().padStart(2, '0')}`;
+                    let classes = '';
+                    if (year === todayYear && month === todayMonth && currentDay === todayDay) {
+                        classes = 'today'; // Dla dzisiejszego dnia
+                    }
+                    if (selectedDate && dayString === selectedDate) {
+                        classes = 'selected'; // Dla wybranego dnia
+                    }
+                    calendarHTML += `<td class="${classes}" data-date="${dayString}"
+                        onmouseover="hoverDay(this)" onmouseout="unhoverDay(this)" onclick="selectDay(${currentDay}, ${month + 1}, ${year}, '${dayString}')">${currentDay}</td>`;
+                    currentDay++;
+                } else {
+                    calendarHTML += '<td></td>';
+                }
+            }
+            calendarHTML += '</tr>';
+            if (currentDay > daysInMonth) break;
+        }
+        calendarHTML += '</tbody></table>';
+        calendarElement.innerHTML = calendarHTML;
+    }
+
+    // Funkcja do zmiany miesiąca
+    function changeMonth(direction) {
+        currentMonth += direction;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        } else if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        generateCalendar(currentMonth, currentYear);
+    }
+
+    // Funkcja do najeżdżania myszką na dzień
+    function hoverDay(element) {
+        element.classList.add('hovered');
+    }
+
+    // Funkcja do usuwania efektu najechania
+    function unhoverDay(element) {
+        element.classList.remove('hovered');
+    }
+
+    // Funkcja do wyboru dnia
+    function selectDay(day, month, year, dayString) {
+        // Zapisz wybraną datę
+        selectedDate = dayString;
+
+        // Przeładuj kalendarz, aby dodać klasę 'selected' do wybranego dnia
+        generateCalendar(currentMonth, currentYear);
+    }
+
+    // Początkowe wygenerowanie kalendarza
+    generateCalendar(currentMonth, currentYear);
+</script>
+</body>
+</html>
+

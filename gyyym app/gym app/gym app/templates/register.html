@@ -1,0 +1,99 @@
+{% extends "bootstrap/base.html" %}
+{% block scripts %}
+    {{ super() }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background-color: rgb(31,32,36);
+        height: 100vh;
+}
+
+    .body{
+        background-image: url("../static/images/bg.svg");
+        background-repeat: no-repeat;
+        background-size:135vh;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        background-position: center;
+}
+
+form{
+    height: 60vh;
+    width: 80vw;
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    position: fixed;
+    border-radius: 10px;
+    backdrop-filter: blur(6px);
+    border: 2px solid rgb(255, 255, 255);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding:25px;
+
+}
+    </style>
+{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+{% block navbar %}
+{% endblock %}
+{% block content %}
+<div class="body">
+    <div class="container py-4 mt-5">
+        <div class="row">
+            <div class="col-lg-6 d-lg-flex align-items-lg-center">
+                <div style="max-width: 350px;">
+                    <form action="/register" method="post" class="form" onSubmit="return make_json(this);">
+                        <a href="/" class="btn btn-sm btn-outline-dark me-2">Login
+                        <i class="bi bi-person-fill"></i></a>
+                        <a href="/register" class="btn btn-sm btn-light me-2">Sign-up
+                        <i class="bi bi-person-fill-add"></i></a>
+                        {{ register_form.hidden_tag() }}
+                        {{ register_form.user_name.label(class="form-label") }}
+                        {{ register_form.user_name(class="form-control") }}
+                        {{ register_form.user_password.label(class="form-label mt-2") }}
+                        {{ register_form.user_password(class="form-control") }}
+                        {{ register_form.user_email.label(class="form-label mt-2") }}
+                        {{ register_form.user_email(class="form-control") }}
+                        <a href="clock.html">{{ register_form.submit(class="btn btn-sm btn-dark mt-3 float-end") }}</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<pre id="output">
+</pre>
+
+</div>
+
+<script>
+document.getElementById("myForm").onsubmit = function() {
+    window.location.href = "{{ url_for('clock') }}";
+    return false; // zeby się samo nie wysłało
+};
+	//function make_json(form){
+	//	const json = {
+	//		"user_name": form.user_name.value,
+	//		"user_password": form.user_password.value,
+	//		"user_email": form.user_email.value
+      //  };
+	//const html = JSON.stringify(json, 0,4);
+
+	//document.getElementById('output').innerHTML = html;
+
+	//$.post('data.php',{'json':html} );
+
+	//return false
+	//}
+</script>
+
+{% endblock %}
